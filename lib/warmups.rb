@@ -55,3 +55,24 @@ def merge_sort(arr)
     merge(merge_sort(arr[0...middle]), merge_sort(arr[middle..-1]))
   end
 end
+
+def quicksort(arr, l, r)
+  i, j, p = l, r, arr[(l + r) / 2]
+  while i <= j
+    while arr[i] < p
+      i += 1
+    end
+    while arr[j] > p
+      j -= 1
+    end
+    if i <= j
+      left, right = arr[i], arr[j]
+      arr[i], arr[j] = right, left
+      i += 1
+      j -= 1
+    end
+  end
+  quicksort(arr, l, j) if (j - l) >= 1
+  quicksort(arr, i, r) if (r - i) >= 1
+  arr
+end

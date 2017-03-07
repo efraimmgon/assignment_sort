@@ -23,4 +23,11 @@ describe "sorting algorithms" do
     end
   end
 
+  describe "quicksort" do
+    it "sorts the array" do
+      quicksort(arr, 0, arr.length - 1)
+      expect(arr).to eq(sorted)
+    end
+  end
+
 end
