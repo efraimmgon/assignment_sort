@@ -32,3 +32,26 @@ def bubble_sort(arr)
   # the array is finally sorted (ie. no swaps are made in a single trip through).
   swapped ? bubble_sort(arr) : arr
 end
+
+def merge(left, right, acc = [])
+  return acc if left.empty? && right.empty?
+  return merge(left[1..-1], right, acc.push(left[0])) if right.empty?
+  return merge(left, right[1..-1], acc.push(right[0])) if left.empty?
+  l, r = left[0], right[0]
+  if l < r
+    merge(left[1..-1], right, acc.push(l))
+  else
+    merge(left, right[1..-1], acc.push(r))
+  end
+end
+
+def merge_sort(arr)
+  if arr.empty?
+    []
+  elsif arr.length == 1
+    arr
+  else
+    middle = arr.length / 2
+    merge(merge_sort(arr[0...middle]), merge_sort(arr[middle..-1]))
+  end
+end

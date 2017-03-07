@@ -17,4 +17,10 @@ describe "sorting algorithms" do
     end
   end
 
+  describe "merge_sort" do
+    it "returns a sorted array" do
+      expect(merge_sort(arr)).to eq(sorted)
+    end
+  end
+
 end
