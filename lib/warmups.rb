@@ -12,3 +12,23 @@ def insertion_sort(arr)
   end
   arr
 end
+
+def bubble_sort(arr)
+  # 1. Iterate through the unsorted array, comparing each element with the
+  # following element
+  swapped = false
+  (0...arr.length).each do |i|
+    j = i + 1
+    if j < arr.length
+      left, right = arr[i], arr[j]
+      # 2. If the current element is greater than the next, swap their positions.
+      if left > right
+        swapped = true
+        arr[i], arr[j] = right, left
+      end
+    end
+  end
+  # 3. Start from the beginning of the array and continue this process until
+  # the array is finally sorted (ie. no swaps are made in a single trip through).
+  swapped ? bubble_sort(arr) : arr
+end
